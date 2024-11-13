@@ -28,11 +28,13 @@ const TodoPage = () => {
 
     const handleEdit = (todoEdit) => {
         console.log(todoEdit);
-        todoList.map(todo=> {
-            if (todoEdit.id === todo.id) return todo.title=todoEdit.title
-        })
-        setTodoList([ ...todoList ]);
-    }
+        const updatedTodoList = todoList.map(todo => {
+            if (todo.id === todoEdit.id) return { ...todo, title: todoEdit.title };
+            else return todo;
+        });
+        setTodoList(updatedTodoList);
+    };
+
 
     const handleDone = (id) => {
         todoList.map(todo => {
